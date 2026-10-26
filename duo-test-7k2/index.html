@@ -2224,6 +2224,11 @@ body.v6 .boardwrap #board{max-width:100%!important}
   .app .handwrap{position:sticky!important;bottom:calc(84px + env(safe-area-inset-bottom,0px));z-index:6}
   body.rail .app .handwrap{bottom:max(10px,env(safe-area-inset-bottom,0px))}
 }
+
+/* game setup sheet: close with ✕ at the top instead of «Abbrechen» at the bottom */
+.npxrow{position:sticky;top:0;z-index:4;display:flex;justify-content:flex-end;height:0;margin:0!important}
+.npx{appearance:none;border:0;width:34px;height:34px;border-radius:50%;background:var(--panel2,#ebe9e3);color:var(--fg);font:800 15px/34px var(--body);padding:0;cursor:pointer;transform:translate(6px,-6px);box-shadow:0 1px 4px rgba(0,0,0,.08)}
+#npcancel{display:none!important}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -2376,7 +2381,7 @@ body.v6 .boardwrap #board{max-width:100%!important}
   <button class="btn primary wide" type="submit" id="obgo">Los geht's</button><button class="btn wide" type="button" id="obskip">Später</button>
 </form></div>
 <div class="overlay" id="gsheet" hidden><div class="box sheet" id="gbox"></div></div>
-<div class="overlay" id="npask" hidden><div class="box npbox"><div class="npextra" id="nptype"><span class="note">Art des Spiels</span><span class="nptype" id="nptypeseg"><button type="button" data-v="ranked" style="--ty:#c99700"><span class="tyi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 3h11v6a5.5 5.5 0 0 1-11 0z"/><path d="M6.5 5H3.5v1.5A3.5 3.5 0 0 0 7 10M17.5 5h3v1.5A3.5 3.5 0 0 1 17 10" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="10.8" y="14" width="2.4" height="4"/><rect x="7" y="18.5" width="10" height="2.6" rx="1"/></svg></span><b>Rangliste</b><small class="tys" data-k="ranked"></small><span class="tyck"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></button><button type="button" data-v="fun" style="--ty:#1f9447"><span class="tyi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.6-4.7-9.6-9.4C1 8 3.3 4.4 6.9 4.4c2.1 0 3.6 1.2 5.1 3 1.5-1.8 3-3 5.1-3 3.6 0 5.9 3.6 4.5 7.2C19.6 16.3 12 21 12 21z"/></svg></span><b>Freundschaft</b><small class="tys" data-k="fun"></small><span class="tyck"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></button></span><small class="note" id="nptypenote"></small></div><div class="npextra" id="npmode"><span class="note">Spielmodus</span><div class="gmodes" id="gmodes"></div></div><div class="npextra" id="npcol"><span class="note">Deine Farbe</span><span class="npcols" id="npcols"></span></div>
+<div class="overlay" id="npask" hidden><div class="box npbox"><div class="npxrow"><button class="npx" type="button" id="npx" aria-label="Schliessen">✕</button></div><div class="npextra" id="nptype"><span class="note">Art des Spiels</span><span class="nptype" id="nptypeseg"><button type="button" data-v="ranked" style="--ty:#c99700"><span class="tyi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 3h11v6a5.5 5.5 0 0 1-11 0z"/><path d="M6.5 5H3.5v1.5A3.5 3.5 0 0 0 7 10M17.5 5h3v1.5A3.5 3.5 0 0 1 17 10" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="10.8" y="14" width="2.4" height="4"/><rect x="7" y="18.5" width="10" height="2.6" rx="1"/></svg></span><b>Rangliste</b><small class="tys" data-k="ranked"></small><span class="tyck"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></button><button type="button" data-v="fun" style="--ty:#1f9447"><span class="tyi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.6-4.7-9.6-9.4C1 8 3.3 4.4 6.9 4.4c2.1 0 3.6 1.2 5.1 3 1.5-1.8 3-3 5.1-3 3.6 0 5.9 3.6 4.5 7.2C19.6 16.3 12 21 12 21z"/></svg></span><b>Freundschaft</b><small class="tys" data-k="fun"></small><span class="tyck"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></button></span><small class="note" id="nptypenote"></small></div><div class="npextra" id="npmode"><span class="note">Spielmodus</span><div class="gmodes" id="gmodes"></div></div><div class="npextra" id="npcol"><span class="note">Deine Farbe</span><span class="npcols" id="npcols"></span></div>
 <div class="npextra" id="npbot"><span class="note">Stärke der Bots</span><span class="seg" id="npbotseg"><button type="button" data-v="easy">Leicht</button><button type="button" data-v="medium">Mittel</button><button type="button" data-v="hard">Schwer</button><button type="button" data-v="pro">Profi</button></span><span class="note npfair">Bots sehen deine Karten nicht, gemischt wird zufällig.</span></div>
 
 <span class="note nplbl">Spieler*innen</span>
@@ -2384,7 +2389,7 @@ body.v6 .boardwrap #board{max-width:100%!important}
   <button class="npopt" type="button" data-np="2" style="--a:#2456d6;--b:#d8262f"><span class="npn">2</span><span class="npt"><b>2 Spieler*innen</b><small>1 gegen 1 · ohne Teams</small></span></button>
   <button class="npopt" type="button" data-np="4" style="--a:#1f9447;--b:#f2c200"><span class="npn">4</span><span class="npt"><b>4 Spieler*innen</b><small>2 gegen 2 · der Klassiker</small></span></button>
   <button class="npopt" type="button" data-np="6" style="--a:#7b4dff;--b:#e5202e"><span class="npn">6</span><span class="npt"><b>6 Spieler*innen</b><small>3 Teams à 2 · grosses Brett</small></span></button>
-</div><button class="btn primary wide npgo" id="npgo" type="button">Spiel starten</button><button class="btn wide" id="npcancel" type="button">Abbrechen</button></div></div>
+</div><button class="btn primary wide npgo" id="npgo" type="button">Spiel starten</button><button class="btn wide" id="npcancel" type="button" hidden>Abbrechen</button></div></div>
 <div class="overlay" id="rateov" hidden><div class="box ratebox">
   <button class="ratex" type="button" id="ratex" aria-label="Schliessen">✕</button>
   <div id="rate1"><div class="ratehero"><i style="--c:#2456d6"></i><i style="--c:#1f9447"></i><i style="--c:#e5202e"></i><i style="--c:#f2b705"></i></div><h2>Gefällt dir DÖG?</h2><p class="note">DÖG ist ein kleines Projekt aus Zürich. Eine Bewertung hilft enorm, damit mehr Leute mitspielen.</p>
@@ -7736,4 +7741,6 @@ setInterval(()=>{try{presenceDraw()}catch(e){}},3000);
 (function(){let pr=document.getElementById('sarprobe');if(!pr){pr=document.createElement('div');pr.id='sarprobe';document.body.appendChild(pr)}
   const sync=()=>{const w=innerWidth,h=innerHeight,sr=pr.offsetWidth||0;document.body.classList.toggle('rail',(w>=600&&w>=h*1.05)||(w<540&&w>=h*.6)||sr>=24)};
   sync();addEventListener('resize',sync);addEventListener('orientationchange',()=>setTimeout(sync,250))})();
+
+document.getElementById('npx').addEventListener('click',()=>{sfx('ui');document.getElementById('npcancel').click()});
 </script>
