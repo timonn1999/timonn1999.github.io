@@ -2201,6 +2201,29 @@ body.rail.hastabs .toast{bottom:calc(20px + env(safe-area-inset-bottom,0px))}
   body #home .scr{padding-top:calc(env(safe-area-inset-top,0px) + 76px)!important;padding-bottom:20px!important}
   .app{padding-top:max(26px,env(safe-area-inset-top,0px))!important;padding-bottom:max(22px,env(safe-area-inset-bottom,0px))!important;padding-left:max(30px,env(safe-area-inset-left,0px))!important}
 }
+
+/* 6-player board lying across (iPhone Duo portrait): use the full width */
+body.v6 .boardwrap #board{max-width:100%!important}
+
+/* iPhone Duo outside (side rail, portrait): game title, clock and buttons stand in the right-hand column under the camera, the tab capsule at the bottom of it */
+@media (orientation:portrait){
+  body.rail .tabbar{top:auto;bottom:max(14px,env(safe-area-inset-bottom,0px));transform:none}
+  body.rail .app .topbar{position:fixed;z-index:14;right:max(10px,env(safe-area-inset-right,0px));top:calc(env(safe-area-inset-top,0px) + 64px);width:50px;display:flex!important;flex-direction:column;align-items:center;justify-content:flex-start;gap:10px;margin:0!important;padding:0!important;background:none}
+  body.rail .app .topbar .wm{order:0;display:flex;flex-direction:column;align-items:center;gap:2px;margin:0}
+  body.rail .app .topbar .wm b{font-size:16px;letter-spacing:-.02em}
+  body.rail .app .topbar .wm-m,body.rail .app .topbar .gmtag{display:none!important}
+  body.rail .app .topbar .gclock{order:1;flex-direction:column;gap:1px;padding:5px 0;width:50px;justify-content:center;font-size:12px}
+  body.rail .app .topbar .gclock svg{width:13px;height:13px}
+  body.rail .app .topbar .tb{order:2;display:flex;flex-direction:column;gap:8px;margin:0}
+  body.rail .app .topbar .tb .btn{width:50px;height:50px;min-width:0;padding:0}
+  body.rail .app{padding-top:max(14px,env(safe-area-inset-top,0px))!important}
+  body.rail #home .coinchip,body.rail #home .mechip{top:calc(env(safe-area-inset-top,0px) + 22px)!important}
+}
+/* iPhone Duo (wide-ish portrait): your cards stay visible at the bottom while you look at the board */
+@media (orientation:portrait) and (min-aspect-ratio:3/5){
+  .app .handwrap{position:sticky!important;bottom:calc(84px + env(safe-area-inset-bottom,0px));z-index:6}
+  body.rail .app .handwrap{bottom:max(10px,env(safe-area-inset-bottom,0px))}
+}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -3437,7 +3460,7 @@ const SEAT6=()=>[0,1,2,3,4,5].map(o=>r6(GEO6.av[S6(o)]));
 function roundPoly(pts,r){const n=pts.length,f=v=>v.toFixed(1);let d='';
   for(let i=0;i<n;i++){const [px,py]=pts[(i-1+n)%n],[x,y]=pts[i],[nx,ny]=pts[(i+1)%n],l1=Math.hypot(x-px,y-py),l2=Math.hypot(nx-x,ny-y),k1=Math.min(r,l1/2)/l1,k2=Math.min(r,l2/2)/l2;
     const ax=x+(px-x)*k1,ay=y+(py-y)*k1,bx=x+(nx-x)*k2,by=y+(ny-y)*k2;d+=(i?'L':'M')+f(ax)+' '+f(ay)+'Q'+f(x)+' '+f(y)+' '+f(bx)+' '+f(by)}return d+'Z'}
-function wantV6(){return false}   // the 6-player board is round enough to fit any screen as it is
+function wantV6(){const w=innerWidth,h=innerHeight;return h>w&&w/h>=.6}   // wide-ish portrait screens (iPhone Duo inside and outside): the 6-player board lies across
 function xyTrack(i){if(NP===6)return r6(GEO6.track[(96-(i+16*K6())%96)%96]);const j=(TLN-i)%TLN;return rotQ(TRACK_BASE[j%SEG],(Math.floor(j/SEG)+VIEWROT)%4)}
 function xyHome(o,i){return NP===6?r6(GEO6.home[S6(o)][i]):rotQ(HOME_BASE[i],VSIDE(o))}
 function xyKennel(o,j){return NP===6?r6(GEO6.kennel[S6(o)][j]):rotQ(KENNEL_BASE[j],VSIDE(o))}
@@ -3494,7 +3517,9 @@ const GEO6=(function(){const L=LAYOUTS.dog2,TB=L.track,HB=L.home,KB=L.kennel,u=2
   const badge=[0,1,2,3,4,5].map(sl=>{const st=slot(sl).t[0],b=near(st,I),L=Math.hypot(st[0]-b[0],st[1]-b[1])||1;return [b[0]-(st[0]-b[0])/L*7.8,b[1]-(st[1]-b[1])/L*7.8]});
   const xs=[...O,...av].map(q=>q[0]),ys=[...O,...av].map(q=>q[1]),pad=8,x0=Math.min(...xs)-pad,y0=Math.min(...ys)-pad-30;   // room for the names above the top players
   const vb=[x0,y0,Math.max(...xs)+pad-x0,Math.max(...ys)+pad-y0].map(z=>+z.toFixed(1)).join(' ');
-  return {track,home,kennel,av,sideAv,badge,outline:O.map(q=>q.map(z=>z.toFixed(1)).join(',')).join(' '),hole:roundPoly(I,22),turn:roundPoly(ins(5),17),innerP:I,viewBox:vb,viewBoxV:vb,best,m4i}})();
+  // the same board lying across (V6): points are turned by r6 = [y, 440-x]
+  const vxs=ys,vys=xs.map(x=>440-x),vx0=Math.min(...vxs)-pad,vy0=Math.min(...vys)-pad-30,vbV=[vx0,vy0,Math.max(...vxs)+pad-vx0,Math.max(...vys)+pad-vy0].map(z=>+z.toFixed(1)).join(' ');
+  return {track,home,kennel,av,sideAv,badge,outline:O.map(q=>q.map(z=>z.toFixed(1)).join(',')).join(' '),hole:roundPoly(I,22),turn:roundPoly(ins(5),17),innerP:I,viewBox:vb,viewBoxV:vbV,best,m4i}})();
 
 function xyKey(key){
   if(key[0]==='t') return xyTrack(+key.slice(1));
@@ -3528,7 +3553,7 @@ let layers={};
 let BUILT_SIG='';function lookSig(){try{return JSON.stringify([LOOK,activeSkin().id,PROFILE.charm,PROFILE.fx,PROFILE.ncol,PROFILE.color,PROFILE.icon,PROFILE.winfx])}catch(e){return ''}}
 function lookRefresh(n){try{if(!G||G.idle||!document.body.classList.contains('ingame'))return;if(lookSig()===BUILT_SIG||!svg.childNodes.length){render();return}
   if(busy&&n<25){setTimeout(()=>lookRefresh(n+1),400);return}buildBoard();render()}catch(e){}}
-function buildBoard(){BUILT_SIG=lookSig();V6=wantV6();document.body.classList.toggle('v6',V6);svg.style.maxWidth=NP===6?Math.round(640*(+GEO6.viewBox.split(' ')[2])/440)+'px':'';
+function buildBoard(){BUILT_SIG=lookSig();V6=NP===6&&wantV6();document.body.classList.toggle('v6',V6);svg.style.maxWidth=NP===6?Math.round(640*(+GEO6.viewBox.split(' ')[2])/440)+'px':'';
   svg.innerHTML='';
   const defs=el('defs',{},svg);
   const lg=el('linearGradient',{id:'wood',x1:'0',y1:'0',x2:'1',y2:'1'},defs);
@@ -4441,7 +4466,7 @@ function applyLayout(){
   if(table)document.getElementById('tboard').appendChild(svg);else document.querySelector('.boardwrap').insertBefore(svg,document.getElementById('pbBot'));
   if(table) positionTable();
 }
-addEventListener('resize',()=>{if(G&&G.mode==='table')positionTable();if(NP===6&&wantV6()!==V6&&G){setPalette();if(G.mode!=='online')NAMES=[...NAMESETS[G.mode]];buildBoard();try{render()}catch(e){}}});
+addEventListener('resize',()=>{if(G&&G.mode==='table')positionTable();if(NP===6&&(NP===6&&wantV6())!==V6&&G){setPalette();if(G.mode!=='online')NAMES=[...NAMESETS[G.mode]];buildBoard();try{render()}catch(e){}}});
 
 // ===== TUTORIAL: the very first game is guided – six short steps with real, fixed cards, then the game simply goes on
 let TUT=null;
