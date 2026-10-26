@@ -18,7 +18,7 @@
 html,body{background:var(--bg);color:var(--fg)}
 body{font-family:var(--body);font-size:15px;line-height:1.45}
 .app{max-width:1120px;margin:0 auto;padding-block:16px 28px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:18px}
-@media (min-width:900px) and (min-aspect-ratio:1/1){.app{grid-template-columns:minmax(0,1fr) 360px;align-items:start;padding-block:28px}}
+@media (min-width:760px) and (min-aspect-ratio:1/1){.app{grid-template-columns:minmax(0,1fr) 360px;align-items:start;padding-block:28px}}
 .boardwrap{min-width:0}
 #board{display:block;width:100%;max-width:640px;height:auto;margin:0 auto;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 .panel{display:flex;flex-direction:column;gap:16px;min-width:0}
@@ -549,7 +549,7 @@ body{font-family:"Segoe UI",-apple-system,BlinkMacSystemFont,system-ui,sans-seri
 .chatlog li{background:var(--panel2);border:0;color:#fff}.chatlog li.me{background:var(--go);color:#fff}
 .bubble{background:#fff;color:#262421;border:0}
 .app{max-width:1180px}
-@media (min-width:900px) and (min-aspect-ratio:1/1){.app{grid-template-columns:minmax(0,1fr) 380px}}
+@media (min-width:760px) and (min-aspect-ratio:1/1){.app{grid-template-columns:minmax(0,1fr) 380px}}
 
 /* ===================== light variant, blue accent (no green) ===================== */
 :root{--bg:#eef0f4;--panel:#ffffff;--panel2:#e6e9ef;--panel3:#d9dde5;--line:#d9dde5;--fg:#1f2328;--muted:#5b6270;--ink:#1f2328;
@@ -589,7 +589,7 @@ html,body{background:var(--bg);color:var(--fg)}
 .pbar .pn b{color:var(--fg)}
 
 /* phone & portrait tablet: one column, cards right under the board */
-@media (max-width:899px),(max-aspect-ratio:1/1){
+@media (max-width:759px),(max-aspect-ratio:1/1){
   .app{display:flex;flex-direction:column;gap:6px}
   .app>.boardwrap,.app>.panel,#tab-play,#tab-play[hidden]{display:contents!important}
   .app .topbar{order:0!important}
@@ -1799,7 +1799,7 @@ body.iap .protonote{display:none!important}
 #over .confetti{z-index:1}
 
 /* 6 players on a phone: the tall board shrinks so hand, status and tabs stay on screen */
-@media (max-width:899px),(max-aspect-ratio:1/1){body.np6 .app #board{margin-top:-6px}body.np6 .app .handwrap{margin-top:-12px!important}}
+@media (max-width:759px),(max-aspect-ratio:1/1){body.np6 .app #board{margin-top:-6px}body.np6 .app .handwrap{margin-top:-12px!important}}
 
 /* dark mode: profile hero glows in the player colour on a dark ground, chips and bar stay readable */
 body.dark .pfhero{background:radial-gradient(120% 90% at 50% 38%,color-mix(in srgb,var(--hc) 42%,#11151d) 0%,color-mix(in srgb,var(--hc) 16%,var(--panel)) 58%,var(--panel) 100%)}
@@ -2150,7 +2150,12 @@ body.iap .protoreset,body.native .protoreset,body.native .protonote{display:none
 #netoff svg{width:16px;height:16px;flex:none}
 
 /* wide-ish portrait screens (iPhone Duo inside/outside, small tablets): the board gives room to cards and messages */
-@media (max-width:699px) and (min-aspect-ratio:3/5) and (orientation:portrait){.boardwrap #board{max-width:max(280px,min(640px,calc(100dvh - 440px)))}}
+@media (max-width:699px) and (min-aspect-ratio:3/5) and (orientation:portrait){.boardwrap #board{max-width:max(230px,min(640px,calc(100dvh - 440px)))}}
+
+/* landscape (iPhone Duo open, tablets): board never taller than the screen; home fits without scrolling */
+@media (min-width:760px) and (min-aspect-ratio:1/1){.boardwrap #board{max-width:min(640px,calc(100dvh - 130px))}}
+@media (max-height:640px){#home .hero{zoom:.6}}
+@media (min-aspect-ratio:1/1) and (max-height:700px) and (min-width:700px){#home .hero{zoom:.6}#home #hpair{margin-top:0}}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
