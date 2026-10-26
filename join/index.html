@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="robots" content="noindex, nofollow"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DÖG – Einladung</title>
+<meta property="og:title" content="Spiel mit mir DÖG!"><meta property="og:description" content="Tippe auf den Link und tritt direkt meinem Spiel bei.">
+<style>
+:root{--bg:#efeee9;--fg:#111;--mut:#5b5b60;--card:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#202329;--fg:#f2f2f2;--mut:#a3a7ae;--card:#2b2f36}}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 -apple-system,"Helvetica Neue",Helvetica,Arial,sans-serif;min-height:100vh;display:grid;place-items:center}
+main{max-width:420px;width:100%;padding:32px 16px;box-sizing:border-box;text-align:center}
+.logo{display:flex;justify-content:center;margin-bottom:22px}.logo i{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;color:#fff;font:800 32px/1 -apple-system,Helvetica,Arial,sans-serif;font-style:normal;margin-left:-8px;box-shadow:0 0 0 4px var(--bg)}.logo i:first-child{margin-left:0}
+h1{font-size:30px;letter-spacing:-.03em;margin:0 0 6px;line-height:1.1}.mut{color:var(--mut);margin:0}
+.code{background:var(--card);border-radius:24px;padding:18px;margin:24px 0}.code small{display:block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut)}.code b{display:block;font-size:56px;letter-spacing:.18em;margin-left:.18em;line-height:1.2}
+a.btn{display:block;text-decoration:none;border-radius:999px;padding:16px;font-weight:800;font-size:18px;margin-top:12px}
+.go{background:#1f9447;color:#fff}.store{background:var(--card);color:var(--fg)}
+</style></head><body><main>
+<div class="logo" aria-hidden="true"><i style="background:#2456d6">D</i><i style="background:#1f9447">Ö</i><i style="background:#d8262f">G</i><i style="background:#f2c200">!</i></div>
+<h1 id="t">Du bist zu einem DÖG-Spiel eingeladen</h1>
+<p class="mut" id="s">Öffne DÖG und du sitzt direkt am Tisch.</p>
+<div class="code"><small id="cl">Spiel-Code</small><b id="code">––––</b></div>
+<a class="btn go" id="go" href="#">In DÖG öffnen</a>
+<a class="btn store" id="store" href="https://apps.apple.com/app/id6824520838">DÖG laden</a>
+<p class="mut" style="margin-top:16px;font-size:14px" id="h">Noch keine App? Lade DÖG, tippe «Online spielen» und gib den Code ein.</p>
+</main><script>
+var c=(new URLSearchParams(location.search).get('c')||'').toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,6);
+var L=(navigator.language||'de').slice(0,2),T={
+fr:['Tu es invité·e à une partie de DÖG','Ouvre DÖG et tu es directement à la table.','Code de la partie','Ouvrir dans DÖG','Télécharger DÖG','Pas encore l’app ? Télécharge DÖG, touche « Jouer en ligne » et saisis le code.'],
+it:['Sei invitato a una partita di DÖG','Apri DÖG e sei subito al tavolo.','Codice partita','Apri in DÖG','Scarica DÖG','Non hai ancora l’app? Scarica DÖG, tocca «Gioca online» e inserisci il codice.'],
+en:['You’re invited to a game of DÖG','Open DÖG and you’re right at the table.','Game code','Open in DÖG','Get DÖG','No app yet? Get DÖG, tap “Play online” and enter the code.']}[L];
+if(T){['t','s','cl','go','store','h'].forEach(function(id,i){document.getElementById(id).textContent=T[i]});document.documentElement.lang=L}
+if(c){document.getElementById('code').textContent=c;var u='doeg://join?c='+c;document.getElementById('go').href=u;setTimeout(function(){location.href=u},300)}
+else document.getElementById('go').style.display='none';
+</script></body></html>
