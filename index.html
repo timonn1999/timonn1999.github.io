@@ -1,34 +1,135 @@
 <!doctype html>
-<html lang="de"><head><meta charset="utf-8"><meta name="robots" content="noindex, nofollow"><meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="de"><head><meta charset="utf-8"><meta name="robots" content="noindex, nofollow"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>DÖG – Brettspiel</title>
-<meta name="description" content="DÖG – das Brettspiel Dog als App. Support, Datenschutz und Kontakt.">
+<meta name="description" content="DÖG! – das Kultspiel Dog aus der Schweiz als App fürs iPhone und iPad. Gegen Bots, im Team oder online mit Freund*innen.">
+<meta property="og:title" content="DÖG! – Dog Brettspiel"><meta property="og:description" content="Das Kultspiel aus der Schweiz – jetzt auf dem iPhone.">
+<link rel="icon" href="/favicon.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <style>
-:root{--bg:#efeee9;--fg:#111;--mut:#5b5b60;--card:#fff}
-@media (prefers-color-scheme:dark){:root{--bg:#202329;--fg:#f2f2f2;--mut:#a3a7ae;--card:#2b2f36}}
-body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 -apple-system,"Helvetica Neue",Helvetica,Arial,sans-serif}
-main{max-width:720px;margin:0 auto;padding:40px 16px 64px}
-h1{font-size:40px;letter-spacing:-.03em;margin:0 0 4px}h2{font-size:21px;margin:0 0 6px}
-.mut{color:var(--mut)}section{background:var(--card);border-radius:20px;padding:20px 22px;margin-top:18px}a{color:#2f6bff}
-.logo{display:flex;margin-bottom:16px}.logo i{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;color:#fff;font:800 28px/1 -apple-system,Helvetica,Arial,sans-serif;font-style:normal;margin-left:-7px;box-shadow:0 0 0 4px var(--bg)}.logo i:first-child{margin-left:0}
-ul{margin:6px 0 0;padding-left:20px}li{margin:4px 0}
-</style></head><body><main>
-<div class="logo" aria-hidden="true"><i style="background:#2456d6">D</i><i style="background:#1f9447">Ö</i><i style="background:#d8262f">G</i><i style="background:#f2c200">!</i></div>
-<h1>DÖG</h1><p class="mut">Das Brettspiel Dog als App – allein gegen den Computer, mit Freund*innen am Tisch oder online.</p>
-
-<section id="support"><h2>Support</h2>
-<p>Fragen, Fehler oder Ideen? Schreib uns: <a href="mailto:timon.kiefer@gmail.com?subject=D%C3%96G%20Support">timon.kiefer@gmail.com</a>. Wir antworten in der Regel innert weniger Tage.</p>
-<ul>
-<li><b>Käufe wiederherstellen:</b> Shop oder DÖG Unlimited › «Käufe wiederherstellen».</li>
-<li><b>Profil auf neuem Handy:</b> Profil › «Konto sichern» mit Apple oder Google, dann auf dem neuen Gerät gleich anmelden.</li>
-<li><b>Konto löschen:</b> Profil › «Konto löschen». Profil, Benutzername, Spielstand und Freundesliste werden endgültig entfernt.</li>
-<li><b>Spieler*in melden:</b> In der App blockieren oder per E-Mail mit dem Benutzernamen melden.</li>
-</ul></section>
-
-<section><h2>Datenschutz</h2>
-<p><a href="/datenschutz/">Datenschutzerklärung</a> (Deutsch, Français, Italiano, English)</p></section>
-
-<section lang="en"><h2>English</h2>
-<p>DÖG is the board game Dog as an app. Support: <a href="mailto:timon.kiefer@gmail.com?subject=D%C3%96G%20Support">timon.kiefer@gmail.com</a> · <a href="/datenschutz/#en">Privacy policy</a></p></section>
-
-<p class="mut" style="margin-top:22px">Timon Kiefer · Zürich, Schweiz</p>
-</main></body></html>
+:root{--navy:#161a33;--bg:#f1efea;--fg:#111;--mut:#5b5b60;--card:#fff;--b:#2456d6;--g:#1f9447;--r:#d8262f;--y:#f2c200}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1b1e2b;--fg:#f2f2f2;--mut:#a3a7ae;--card:#262a3a}}
+:root[data-theme="dark"]{--bg:#1b1e2b;--fg:#f2f2f2;--mut:#a3a7ae;--card:#262a3a}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.55 -apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,Arial,sans-serif;overflow-x:hidden}
+a{color:inherit}
+.hero{background:var(--navy);color:#fff;position:relative;overflow:hidden;padding:max(28px,env(safe-area-inset-top)) 16px 0}
+.hero .rg{position:absolute;border-radius:50%;border:22px solid rgba(255,255,255,.045);left:50%;top:62%;transform:translate(-50%,-50%);pointer-events:none}
+.mb{position:absolute;border-radius:50%;overflow:hidden}.mb::before{content:'';position:absolute;left:22%;top:16%;width:26%;height:26%;border-radius:50%;background:rgba(255,255,255,.55)}.mb::after{content:'';position:absolute;inset:0;border-radius:50%;box-shadow:inset -8px -9px 0 rgba(0,0,0,.18)}
+.wrap{max-width:1040px;margin:0 auto;position:relative}
+nav{display:flex;justify-content:space-between;align-items:center;gap:12px}
+nav .lang{display:flex;gap:4px}nav .lang button{appearance:none;border:0;background:rgba(255,255,255,.1);color:#fff;font:700 13px/1 inherit;font-family:inherit;padding:8px 10px;border-radius:999px;cursor:pointer}nav .lang button.on{background:#fff;color:var(--navy)}
+.mini{display:flex}.mini i{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;color:#fff;font:800 15px/1 inherit;font-style:normal;margin-left:-5px;box-shadow:0 0 0 3px var(--navy)}.mini i:first-child{margin-left:0}
+.logo{display:flex;justify-content:center;margin:46px 0 18px}.logo i{width:clamp(64px,13vw,104px);height:clamp(64px,13vw,104px);border-radius:50%;display:grid;place-items:center;color:#fff;font:800 clamp(32px,6.5vw,52px)/1 -apple-system,Helvetica,Arial,sans-serif;font-style:normal;margin-left:-10px;box-shadow:0 0 0 5px var(--navy)}.logo i:first-child{margin-left:0}
+h1{font-size:clamp(34px,7vw,64px);line-height:1.02;letter-spacing:-.035em;margin:0;text-align:center;font-weight:900}
+h1 em{font-style:normal;color:#ffd23f}
+.sub{text-align:center;opacity:.75;font-size:clamp(17px,2.4vw,21px);margin:14px 0 26px}
+.cta{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:10px;text-decoration:none;border-radius:999px;padding:15px 24px;font-weight:800;font-size:17px;background:#fff;color:var(--navy)}
+.btn svg{width:22px;height:22px}.btn small{display:block;font-size:11px;font-weight:700;opacity:.6;line-height:1}.btn b{display:block;line-height:1.1}
+.btn.ghost{background:rgba(255,255,255,.1);color:#fff}
+.stage{position:relative;height:clamp(250px,36vw,400px);margin-top:36px}
+.stage .bd{position:absolute;left:50%;top:0;width:clamp(280px,42vw,460px);height:auto;transform:translateX(-58%) rotate(-7deg);filter:drop-shadow(0 18px 0 rgba(0,0,0,.35))}
+.fan{position:absolute;left:50%;bottom:8%;width:clamp(80px,12vw,120px);transform:translateX(clamp(60px,14vw,190px))}
+.cd{position:absolute;left:0;bottom:0;width:100%;aspect-ratio:60/86;transform-origin:50% 190%;transform:rotate(var(--r));filter:drop-shadow(0 8px 0 rgba(0,0,0,.25))}.cd svg{width:100%;height:100%;display:block}
+section{padding:64px 16px}
+h2{font-size:clamp(28px,4.6vw,42px);letter-spacing:-.03em;line-height:1.08;margin:0 0 10px;font-weight:900}
+.lead{color:var(--mut);margin:0 0 30px;max-width:620px}
+.feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.f{background:var(--card);border-radius:24px;padding:22px}
+.f .ic{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;color:#fff;margin-bottom:14px;font-weight:900;font-size:22px}
+.f h3{margin:0 0 4px;font-size:19px;letter-spacing:-.01em}.f p{margin:0;color:var(--mut);font-size:15.5px}
+.shots{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 16px 18px;margin:0 -16px;scrollbar-width:none}
+.shots::-webkit-scrollbar{display:none}
+.shots img{flex:none;width:min(62vw,260px);border-radius:22px;scroll-snap-align:center;box-shadow:0 10px 28px -14px rgba(0,0,0,.4);background:#ddd;aspect-ratio:1206/2622;height:auto}
+.fair{background:var(--card);border-radius:28px;padding:26px;display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.fair div{display:flex;gap:12px}.fair b{display:block}.fair span{color:var(--mut);font-size:15.5px}
+.dot{width:14px;height:14px;border-radius:50%;flex:none;margin-top:6px}
+footer{background:var(--navy);color:#fff;padding:40px 16px max(40px,env(safe-area-inset-bottom))}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;align-items:center}
+footer a{opacity:.8;text-decoration:none;margin-right:18px}footer a:hover{opacity:1}
+footer small{opacity:.55}
+@media (max-width:560px){.mb.m1{top:330px!important;left:-70px!important}.mb.m2{width:44px!important;height:44px!important;top:300px!important;right:-12px!important}.stage{height:250px}.stage .bd{width:300px;transform:translateX(-60%) rotate(-7deg)}.fan{width:74px;transform:translateX(50px)}}
+</style></head><body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="su-h" viewBox="0 0 100 100"><path d="M50 92 C22 68 4 50 4 30 C4 14 16 5 29 5 C39 5 46 11 50 20 C54 11 61 5 71 5 C84 5 96 14 96 30 C96 50 78 68 50 92Z"/></symbol>
+<symbol id="su-d" viewBox="0 0 100 100"><path d="M50 2 L88 50 L50 98 L12 50Z"/></symbol>
+<symbol id="su-s" viewBox="0 0 100 100"><path d="M50 3 C40 22 6 38 6 60 C6 75 17 83 29 83 C38 83 44 79 47 73 C46 84 41 92 33 98 L67 98 C59 92 54 84 53 73 C56 79 62 83 71 83 C83 83 94 75 94 60 C94 38 60 22 50 3Z"/></symbol>
+<symbol id="su-c" viewBox="0 0 100 100"><circle cx="50" cy="27" r="20"/><circle cx="26" cy="58" r="20"/><circle cx="74" cy="58" r="20"/><path d="M40 40 L60 40 L60 62 L40 62Z"/><path d="M45 55 L55 55 C56 76 60 88 68 98 L32 98 C40 88 44 76 45 55Z"/></symbol>
+</defs></svg>
+<header class="hero">
+  <div class="rg" style="width:620px;height:620px"></div><div class="rg" style="width:1000px;height:1000px"></div><div class="rg" style="width:1440px;height:1440px"></div>
+  <span class="mb m1" style="width:120px;height:120px;left:-40px;top:120px;background:#d8262f"></span>
+  <span class="mb m2" style="width:70px;height:70px;right:6%;top:90px;background:#2456d6"></span>
+  <span class="mb" style="width:38px;height:38px;left:14%;top:52%;background:#f2c200"></span>
+  <span class="mb" style="width:44px;height:44px;right:12%;top:58%;background:#1f9447"></span>
+  <div class="wrap">
+    <nav><span class="mini" aria-hidden="true"><i style="background:#2456d6">D</i><i style="background:#1f9447">Ö</i><i style="background:#d8262f">G</i><i style="background:#f2c200">!</i></span>
+      <span class="lang" role="group" aria-label="Sprache"><button data-l="de">DE</button><button data-l="fr">FR</button><button data-l="it">IT</button><button data-l="en">EN</button></span></nav>
+    <div class="logo" aria-hidden="true"><i style="background:#2456d6">D</i><i style="background:#1f9447">Ö</i><i style="background:#d8262f">G</i><i style="background:#f2c200">!</i></div>
+    <h1 data-t="h1">Das Kultspiel aus der <em>Schweiz</em></h1>
+    <p class="sub" data-t="sub">Dog – jetzt auf dem iPhone und iPad. Gegen Bots, im Team oder online mit Freund*innen.</p>
+    <div class="cta"><a class="btn" href="https://apps.apple.com/app/id6824520838"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.4 12.6c0-2.5 2-3.7 2.1-3.8-1.2-1.7-3-1.9-3.6-2-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8 1.5 0 2 .8 3.3.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9-.1 0-2.8-1.1-2.8-4.2zM14 5.1c.7-.8 1.2-2 1-3.1-1 0-2.2.7-2.9 1.5-.6.7-1.2 1.9-1 3 1.1.1 2.2-.6 2.9-1.4z"/></svg><span><small data-t="soon">Bald im</small><b>App Store</b></span></a>
+      <a class="btn ghost" href="#spiel" data-t="more">Mehr erfahren</a></div>
+    <div class="stage" aria-hidden="true"><img class="bd" src="/img/board.webp" alt="" width="900" height="900"><div class="fan"><div class="cd" style="--r:-24deg"><svg class="cf" viewBox="0 0 60 86" xmlns="http://www.w3.org/2000/svg"><rect x=".5" y=".5" width="59" height="85" rx="4.5" fill="#fff" stroke="#cfcfd4" stroke-width=".8"/><g fill="#151515"><text x="6.6" y="13.4" font-size="12.5" text-anchor="middle" letter-spacing="-0.5" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-weight="700">A</text><use href="#su-s" x="3.0999999999999996" y="16.7" width="7" height="7"/><g transform="rotate(180 30 43)"><text x="6.6" y="13.4" font-size="12.5" text-anchor="middle" letter-spacing="-0.5" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-weight="700">A</text><use href="#su-s" x="3.0999999999999996" y="16.7" width="7" height="7"/></g></g><g fill="#151515"><use href="#su-s" x="17" y="30" width="26" height="26"/></g></svg></div><div class="cd" style="--r:-12deg"><svg class="cf" viewBox="0 0 60 86" xmlns="http://www.w3.org/2000/svg"><rect x=".5" y=".5" width="59" height="85" rx="4.5" fill="#fff" stroke="#cfcfd4" stroke-width=".8"/><g fill="#cf1530"><text x="6.6" y="13.4" font-size="12.5" text-anchor="middle" letter-spacing="-0.5" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-weight="700">K</text><use href="#su-h" x="3.0999999999999996" y="16.7" width="7" height="7"/><g transform="rotate(180 30 43)"><text x="6.6" y="13.4" font-size="12.5" text-anchor="middle" letter-spacing="-0.5" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-weight="700">K</text><use href="#su-h" x="3.0999999999999996" y="16.7" width="7" height="7"/></g></g><rect x="12.5" y="11.5" width="35" height="63" fill="#fff9ec" stroke="#3c5bd6" stroke-width=".6"/>
+      <clipPath id="cfKh"><rect x="12.5" y="11.5" width="35" height="63"/></clipPath>
+      <g clip-path="url(#cfKh)"><g><path d="M15 43 L15 37 C15 32 21 30.5 30 30.5 C39 30.5 45 32 45 37 L45 43Z" fill="#b8262f"/>
+  <path d="M23 43 L25 31 L35 31 L37 43Z" fill="#2747a8"/><path d="M15 39 L45 39 L45 41 L15 41Z" fill="#e9b53b"/>
+  <path d="M26.5 31 L30 36 L33.5 31" fill="none" stroke="#e9b53b" stroke-width="1.2"/>
+  <circle cx="30" cy="25.5" r="5" fill="#f3d6b0" stroke="#5a3a20" stroke-width=".5"/>
+  <path d="M28 27.8 Q30 29 32 27.8" fill="none" stroke="#7a3a20" stroke-width=".6"/><circle cx="28.3" cy="25" r=".55" fill="#222"/><circle cx="31.7" cy="25" r=".55" fill="#222"/>
+  <path d="M26 28 Q30 33 34 28 L34 29.5 Q30 34.5 26 29.5Z" fill="#8a5a2a"/>
+  <path d="M23 23 L24.5 15.5 L27.5 20 L30 14 L32.5 20 L35.5 15.5 L37 23Z" fill="#e9b53b" stroke="#7a5a12" stroke-width=".5"/><g fill="#cf1530"><use href="#su-h" x="38" y="15" width="6" height="6"/></g></g><g transform="rotate(180 30 43)"><path d="M15 43 L15 37 C15 32 21 30.5 30 30.5 C39 30.5 45 32 45 37 L45 43Z" fill="#b8262f"/>
+  <path d="M23 43 L25 31 L35 31 L37 43Z" fill="#2747a8"/><path d="M15 39 L45 39 L45 41 L15 41Z" fill="#e9b53b"/>
+  <path d="M26.5 31 L30 36 L33.5 31" fill="none" stroke="#e9b53b" stroke-width="1.2"/>
+  <circle cx="30" cy="25.5" r="5" fill="#f3d6b0" stroke="#5a3a20" stroke-width=".5"/>
+  <path d="M28 27.8 Q30 29 32 27.8" fill="none" stroke="#7a3a20" stroke-width=".6"/><circle cx="28.3" cy="25" r=".55" fill="#222"/><circle cx="31.7" cy="25" r=".55" fill="#222"/>
+  <path d="M26 28 Q30 33 34 28 L34 29.5 Q30 34.5 26 29.5Z" fill="#8a5a2a"/>
+  <path d="M23 23 L24.5 15.5 L27.5 20 L30 14 L32.5 20 L35.5 15.5 L37 23Z" fill="#e9b53b" stroke="#7a5a12" stroke-width=".5"/><g fill="#cf1530"><use href="#su-h" x="38" y="15" width="6" height="6"/></g></g></g>
+      <path d="M12.5 43 L47.5 43" stroke="#3c5bd6" stroke-width=".5"/></svg></div><div class="cd" style="--r:0deg"><svg class="cf" viewBox="0 0 60 86" xmlns="http://www.w3.org/2000/svg"><rect x=".5" y=".5" width="59" height="85" rx="4.5" fill="#fff" stroke="#cfcfd4" stroke-width=".8"/><g fill="#151515" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-weight="700"><text x="6.5" y="10" font-size="7" text-anchor="middle">J</text><text x="6.5" y="17" font-size="7" text-anchor="middle">O</text><text x="6.5" y="24" font-size="7" text-anchor="middle">K</text><text x="6.5" y="31" font-size="7" text-anchor="middle">E</text><text x="6.5" y="38" font-size="7" text-anchor="middle">R</text><g transform="rotate(180 30 43)"><text x="6.5" y="10" font-size="7" text-anchor="middle">J</text><text x="6.5" y="17" font-size="7" text-anchor="middle">O</text><text x="6.5" y="24" font-size="7" text-anchor="middle">K</text><text x="6.5" y="31" font-size="7" text-anchor="middle">E</text><text x="6.5" y="38" font-size="7" text-anchor="middle">R</text></g></g>
+    <rect x="13" y="12" width="34" height="62" rx="2" fill="#fff8e6" stroke="#3c5bd6" stroke-width=".6" opacity=".95"/>
+    <path d="M30 30 C26 22 20 20 15.5 23 C19 24 21 27 22 31Z" fill="#cf1530"/><path d="M30 30 C34 22 40 20 44.5 23 C41 24 39 27 38 31Z" fill="#2747a8"/>
+    <path d="M30 31 C29 24 30 19 30 17 C32 22 32 27 30 31Z" fill="#e9b53b"/>
+    <circle cx="15.5" cy="23" r="1.6" fill="#e9b53b"/><circle cx="44.5" cy="23" r="1.6" fill="#e9b53b"/><circle cx="30" cy="16.5" r="1.6" fill="#cf1530"/>
+    <circle cx="30" cy="38" r="7" fill="#f3d6b0" stroke="#5a3a20" stroke-width=".5"/><path d="M26.5 40 Q30 43.5 33.5 40" fill="none" stroke="#cf1530" stroke-width=".9"/>
+    <circle cx="27.6" cy="37" r=".7" fill="#222"/><circle cx="32.4" cy="37" r=".7" fill="#222"/>
+    <path d="M18 74 L22 50 C25 47 35 47 38 50 L42 74Z" fill="#cf1530"/><path d="M30 47 L30 74" stroke="#e9b53b" stroke-width="1.4"/>
+    <path d="M30 56 l1.4 2.9 3.1.4-2.3 2.2.6 3.1-2.8-1.5-2.8 1.5.6-3.1-2.3-2.2 3.1-.4Z" fill="#e9b53b"/></svg></div><div class="cd" style="--r:12deg"><svg class="cf" viewBox="0 0 60 86" xmlns="http://www.w3.org/2000/svg"><rect x=".5" y=".5" width="59" height="85" rx="4.5" fill="#fff" stroke="#cfcfd4" stroke-width=".8"/><g fill="#cf1530"><text x="6.6" y="13.4" font-size="12.5" text-anchor="middle" letter-spacing="-0.5" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-weight="700">7</text><use href="#su-d" x="3.0999999999999996" y="16.7" width="7" height="7"/><g transform="rotate(180 30 43)"><text x="6.6" y="13.4" font-size="12.5" text-anchor="middle" letter-spacing="-0.5" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-weight="700">7</text><use href="#su-d" x="3.0999999999999996" y="16.7" width="7" height="7"/></g></g><rect x="13" y="11.5" width="34" height="63" fill="none" stroke="#3c5bd6" stroke-width=".55" opacity=".7"/><g fill="#cf1530"><use href="#su-d" x="15" y="15" width="10" height="10"/><use href="#su-d" x="35" y="15" width="10" height="10"/><use href="#su-d" x="15" y="38" width="10" height="10"/><use href="#su-d" x="35" y="38" width="10" height="10"/><use href="#su-d" x="15" y="61" width="10" height="10" transform="rotate(180 20 66)"/><use href="#su-d" x="35" y="61" width="10" height="10" transform="rotate(180 40 66)"/><use href="#su-d" x="25" y="26.5" width="10" height="10"/></g></svg></div><div class="cd" style="--r:24deg"><svg class="cf" viewBox="0 0 60 86" xmlns="http://www.w3.org/2000/svg"><rect x=".5" y=".5" width="59" height="85" rx="4.5" fill="#fff" stroke="#cfcfd4" stroke-width=".8"/><g fill="#151515"><text x="6.6" y="13.4" font-size="12.5" text-anchor="middle" letter-spacing="-0.5" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-weight="700">4</text><use href="#su-c" x="3.0999999999999996" y="16.7" width="7" height="7"/><g transform="rotate(180 30 43)"><text x="6.6" y="13.4" font-size="12.5" text-anchor="middle" letter-spacing="-0.5" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-weight="700">4</text><use href="#su-c" x="3.0999999999999996" y="16.7" width="7" height="7"/></g></g><rect x="13" y="11.5" width="34" height="63" fill="none" stroke="#3c5bd6" stroke-width=".55" opacity=".7"/><g fill="#151515"><use href="#su-c" x="15" y="15" width="10" height="10"/><use href="#su-c" x="35" y="15" width="10" height="10"/><use href="#su-c" x="15" y="61" width="10" height="10" transform="rotate(180 20 66)"/><use href="#su-c" x="35" y="61" width="10" height="10" transform="rotate(180 40 66)"/></g></svg></div></div></div>
+  </div>
+</header>
+<main>
+<section id="spiel"><div class="wrap">
+  <h2 data-t="h2a">Karten statt Würfel</h2>
+  <p class="lead" data-t="lead">Spiel deine Karten, bring deine vier Murmeln ins Ziel und schick die Gegner zurück in den Zwinger – mit den echten Regeln vom Küchentisch.</p>
+  <div class="feat">
+    <div class="f"><div class="ic" style="background:#2456d6">4</div><h3 data-t="f1">4 Spielmodi</h3><p data-t="f1p">Classic, Mini für zwischendurch, Party mit Spezialfeldern und Dual.</p></div>
+    <div class="f"><div class="ic" style="background:#1f9447">2</div><h3 data-t="f2">Im Team</h3><p data-t="f2p">Zwei gegen zwei – und zu Beginn jeder Runde tauscht ihr eine Karte.</p></div>
+    <div class="f"><div class="ic" style="background:#d8262f">6</div><h3 data-t="f3">Bis zu 6 Spieler*innen</h3><p data-t="f3p">Zu zweit, zu viert oder zu sechst – gegen Bots von leicht bis Profi.</p></div>
+    <div class="f"><div class="ic" style="background:#f2c200;color:#111">@</div><h3 data-t="f4">Online mit Freund*innen</h3><p data-t="f4p">Schnelles Spiel oder privat per Link, Gruppen und Ranglisten.</p></div>
+  </div>
+</div></section>
+<section style="padding-top:0"><div class="wrap">
+  <h2 data-t="h2b">So sieht's aus</h2>
+  <div class="shots" id="shots"></div>
+</div></section>
+<section style="padding-top:0"><div class="wrap">
+  <h2 data-t="h2c">Fair von Anfang an</h2>
+  <div class="fair">
+    <div><span class="dot" style="background:#1f9447"></span><p style="margin:0"><b data-t="p1">Gratis spielen</b><span data-t="p1p">Gegen Bots ganz ohne Werbung.</span></p></div>
+    <div><span class="dot" style="background:#2456d6"></span><p style="margin:0"><b data-t="p2">Keine Vorteile zu kaufen</b><span data-t="p2p">Münzen schalten nur Aussehen frei – Bretter, Murmeln, Karten.</span></p></div>
+    <div><span class="dot" style="background:#f2c200"></span><p style="margin:0"><b>DÖG Unlimited</b><span data-t="p3p">Einmal bezahlen, kein Abo: nie Werbung, private Spiele, alle Grund-Designs.</span></p></div>
+  </div>
+</div></section>
+</main>
+<footer><div class="wrap"><div><a href="/support/">Support</a><a href="/datenschutz/" data-t="priv">Datenschutz</a><a href="mailto:timon.kiefer@gmail.com?subject=D%C3%96G">Kontakt</a></div><small>© DÖG · Timon Kiefer · Zürich</small></div></footer>
+<script>
+var T={
+fr:{h1:'Le jeu culte de <em>Suisse</em>',sub:'Dog – maintenant sur iPhone et iPad. Contre des bots, en équipe ou en ligne avec tes amis.',soon:'Bientôt sur l’',more:'En savoir plus',h2a:'Des cartes au lieu des dés',lead:'Joue tes cartes, ramène tes quatre billes à la maison et renvoie les adversaires au départ – avec les vraies règles de la table de cuisine.',f1:'4 modes de jeu',f1p:'Classic, Mini pour une partie rapide, Party avec cases spéciales et Dual.',f2:'En équipe',f2p:'Deux contre deux – et au début de chaque manche, vous échangez une carte.',f3:'Jusqu’à 6 joueurs',f3p:'À deux, à quatre ou à six – contre des bots de facile à pro.',f4:'En ligne avec tes amis',f4p:'Partie rapide ou privée par lien, groupes et classements.',h2b:'Aperçu',h2c:'Équitable dès le départ',p1:'Jouer gratuitement',p1p:'Contre les bots, sans aucune pub.',p2:'Aucun avantage à acheter',p2p:'Les pièces ne débloquent que l’apparence – plateaux, billes, cartes.',p3p:'Un seul paiement, pas d’abonnement : jamais de pub, parties privées, tous les designs de base.',priv:'Confidentialité'},
+it:{h1:'Il gioco cult dalla <em>Svizzera</em>',sub:'Dog – ora su iPhone e iPad. Contro i bot, in squadra o online con gli amici.',soon:'Presto su',more:'Scopri di più',h2a:'Carte invece dei dadi',lead:'Gioca le carte, porta le tue quattro biglie a casa e rimanda gli avversari alla partenza – con le vere regole del tavolo di cucina.',f1:'4 modalità',f1p:'Classic, Mini per una pausa, Party con caselle speciali e Dual.',f2:'In squadra',f2p:'Due contro due – e all’inizio di ogni mano vi scambiate una carta.',f3:'Fino a 6 giocatori',f3p:'In due, in quattro o in sei – contro bot da facile a pro.',f4:'Online con gli amici',f4p:'Partita veloce o privata via link, gruppi e classifiche.',h2b:'Anteprima',h2c:'Corretto fin dall’inizio',p1:'Gioca gratis',p1p:'Contro i bot senza pubblicità.',p2:'Nessun vantaggio da comprare',p2p:'Le monete sbloccano solo l’aspetto – tavole, biglie, carte.',p3p:'Un solo pagamento, nessun abbonamento: mai pubblicità, partite private, tutti i design di base.',priv:'Privacy'},
+en:{h1:'The cult game from <em>Switzerland</em>',sub:'Dog – now on iPhone and iPad. Against bots, as a team or online with friends.',soon:'Coming soon to the',more:'Learn more',h2a:'Cards instead of dice',lead:'Play your cards, bring your four marbles home and send your rivals back to the start – with the real kitchen-table rules.',f1:'4 game modes',f1p:'Classic, Mini for a quick round, Party with special fields, and Dual.',f2:'As a team',f2p:'Two against two – and at the start of every round you swap a card.',f3:'Up to 6 players',f3p:'Two, four or six – against bots from easy to pro.',f4:'Online with friends',f4p:'Quick match or private via link, groups and leaderboards.',h2b:'Take a look',h2c:'Fair from the start',p1:'Free to play',p1p:'No ads at all against bots.',p2:'No advantages for sale',p2p:'Coins only unlock looks – boards, marbles, cards.',p3p:'Pay once, no subscription: never ads, private games, all basic designs.',priv:'Privacy'}};
+var DE={};document.querySelectorAll('[data-t]').forEach(function(e){DE[e.dataset.t]=e.innerHTML});
+function setL(l){var d=T[l]||DE;document.documentElement.lang=l;document.querySelectorAll('[data-t]').forEach(function(e){var v=(T[l]||{})[e.dataset.t];e.innerHTML=v!=null?v:DE[e.dataset.t]});
+  document.querySelectorAll('.lang button').forEach(function(b){b.classList.toggle('on',b.dataset.l===l)});
+  var s=document.getElementById('shots'),h='';for(var i=1;i<=7;i++)h+='<img loading="lazy" src="/img/s_'+l+'_'+i+'.webp" alt="DÖG Screenshot '+i+'" width="540" height="1174">';s.innerHTML=h;try{localStorage.setItem('doeglang',l)}catch(e){}}
+document.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('click',function(){setL(b.dataset.l)})});
+var l0='de';try{l0=localStorage.getItem('doeglang')||''}catch(e){}if(!l0){l0=(navigator.language||'de').slice(0,2);if(!/^(de|fr|it|en)$/.test(l0))l0='de'}setL(l0);
+</script>
+</body></html>
